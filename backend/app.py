@@ -12,17 +12,39 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def create_app():
-    app = Flask(__name__)
+    # Point Flask to the root directory for HTML and static files
+    # Note: 'static' folder is now in the project root, brother to 'backend'
+    app = Flask(__name__, 
+                static_folder='../static', 
+                template_folder='..')
+    
     app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
 
-    # Enable CORS for frontend origin
-    CORS(app, origins=[os.getenv("FRONTEND_URL", "http://localhost:8080"), "*"])
+    # Enable CORS
+    CORS(app, origins=["*"])
 
     # Register blueprints
     from routes.resume import resume_bp
     app.register_blueprint(resume_bp, url_prefix="/api")
 
+    # --- Frontend Routes ---
+    
     @app.route("/")
+    def index():
+        from flask import send_from_directory
+        return send_from_directory(app.template_folder, 'index.html')
+
+    @app.route('/static/<path:path>')
+    def send_static(path):
+        from flask import send_from_directory
+        return send_from_directory(app.static_folder, path)
+
+    @app.route('/<path:filename>.html')
+    def serve_html(filename):
+        from flask import send_from_directory
+        return send_from_directory(app.template_folder, f'{filename}.html')
+
+    @app.route("/health")
     def health():
         return {"status": "ok", "message": "AI Resume Analyzer API is running"}, 200
 

@@ -33,7 +33,7 @@ def _init_firebase():
     if firebase_admin._apps:
         return  # Already initialized
 
-    json_str = os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY_JSON")
+    json_str = os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY_JSON") or os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON")
     if json_str:
         # Production: credential from env var JSON string
         service_account_info = json.loads(json_str)
