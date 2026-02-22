@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyze Resume — AI Resume Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+
+<body class="app-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="bi bi-file-earmark-person-fill"></i><span>ResumeAI</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link"><i class="bi bi-grid"></i> Dashboard</a>
+            <a href="create_resume.html" class="sidebar-link"><i class="bi bi-file-earmark-plus"></i> Create Resume</a>
+            <a href="analyze.html" class="sidebar-link active"><i class="bi bi-search"></i> Analyze Resume</a>
+            <a href="history.html" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+            <a href="profile.html" class="sidebar-link"><i class="bi bi-person-circle"></i> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-sm btn-outline-danger w-100" id="logout-btn"><i
+                    class="bi bi-box-arrow-left me-1"></i> Logout</button>
+        </div>
+    </aside>
+
+    <main class="app-main">
+        <div class="app-topbar">
+            <button class="btn btn-sm btn-link sidebar-toggle" id="sidebar-toggle"><i
+                    class="bi bi-list fs-4"></i></button>
+            <div class="topbar-greeting"><span>Analyze Resume</span></div>
+            <div class="topbar-right">
+                <a href="profile.html"><img src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff"
+                        alt="Avatar" id="topbar-avatar" width="36" height="36" style="border-radius:50%;" /></a>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <div id="upload-section">
+            <div class="text-center mb-4">
+                <h2 class="section-title">Upload Your Resume</h2>
+                <p class="text-muted">Get an instant AI-powered analysis with ATS score, keyword gaps, and improvement
+                    suggestions.</p>
+            </div>
+
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-zone-content" id="upload-drop-area">
+                    <i class="bi bi-cloud-upload upload-zone-icon"></i>
+                    <p class="fs-5 fw-semibold mt-3">Drag &amp; Drop your resume here</p>
+                    <p class="text-muted">PDF or DOCX — Max 10MB</p>
+                    <label for="file-input" class="btn btn-primary mt-3 px-4">
+                        <i class="bi bi-folder2-open me-2"></i>Browse File
+                    </label>
+                    <input type="file" id="file-input" accept=".pdf,.docx" class="d-none" />
+                </div>
+                <div id="file-selected" class="d-none text-center">
+                    <i class="bi bi-file-earmark-check fs-1 text-success"></i>
+                    <p class="fw-semibold mt-2" id="selected-filename">filename.pdf</p>
+                    <p class="text-muted small" id="selected-filesize"></p>
+                    <div class="d-flex gap-2 justify-content-center mt-3">
+                        <button class="btn btn-success px-4" id="analyze-btn" onclick="submitAnalyze()">
+                            <i class="bi bi-robot me-2"></i>Analyze with AI
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="clearFile()">
+                            <i class="bi bi-x-circle me-1"></i>Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="analyze-loading" class="d-none text-center py-6">
+            <div class="ai-processing-animation mb-4">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring ring-2"></div>
+                <i class="bi bi-robot ai-process-icon"></i>
+            </div>
+            <h4 class="fw-bold mt-4">Gemini AI is Analyzing Your Resume...</h4>
+            <p class="text-muted">This may take a few seconds. Please wait.</p>
+            <div class="analyze-steps mt-4" id="analyze-steps">
+                <div class="analyze-step" id="astep-1"><i class="bi bi-file-text me-2"></i>Extracting text...</div>
+                <div class="analyze-step" id="astep-2"><i class="bi bi-key me-2"></i>Checking keywords...</div>
+                <div class="analyze-step" id="astep-3"><i class="bi bi-graph-up me-2"></i>Calculating ATS score...</div>
+                <div class="analyze-step" id="astep-4"><i class="bi bi-stars me-2"></i>Generating suggestions...</div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <h4><i class="bi bi-graph-up-arrow me-2 text-primary"></i>Analysis Results</h4>
+                <button class="btn btn-outline-secondary btn-sm" onclick="resetAnalyzer()">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>Analyze Another
+                </button>
+            </div>
+
+            <!-- ATS Score + Job Role -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <h6 class="text-muted mb-3">ATS Score</h6>
+                        <div class="ats-score-ring">
+                            <svg viewBox="0 0 120 120" class="score-svg">
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="#1e293b" stroke-width="10" />
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="url(#scoreGrad)" stroke-width="10"
+                                    stroke-dasharray="326.7" stroke-dashoffset="326.7" stroke-linecap="round"
+                                    transform="rotate(-90 60 60)" id="score-circle" />
+                                <defs>
+                                    <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#6366f1" />
+                                        <stop offset="100%" stop-color="#06b6d4" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="score-center">
+                                <span class="score-number" id="ats-score-num">0</span>
+                                <span class="score-label">/100</span>
+                            </div>
+                        </div>
+                        <div class="score-badge mt-2" id="score-badge">–</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="text-muted mb-3"><i class="bi bi-briefcase me-1"></i>Suggested Role</h6>
+                        <p class="fw-bold fs-5 text-primary" id="suggested-role">–</p>
+                        <h6 class="text-muted mt-3 mb-2"><i class="bi bi-trophy me-1"></i>Strengths</h6>
+                        <ul class="result-list" id="strengths-list"></ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="text-muted mb-2"><i class="bi bi-exclamation-circle me-1"></i>Weaknesses</h6>
+                        <ul class="result-list result-list-warn" id="weaknesses-list"></ul>
+                        <h6 class="text-muted mt-3 mb-2"><i class="bi bi-chat-text me-1"></i>Overall Feedback</h6>
+                        <p class="small" id="overall-feedback">–</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keywords -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Present Keywords</h6>
+                        <div class="keyword-chips" id="present-keywords"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="mb-3"><i class="bi bi-x-circle-fill text-danger me-2"></i>Missing Keywords</h6>
+                        <div class="keyword-chips" id="missing-keywords"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Gaps + Grammar -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="mb-3"><i class="bi bi-bar-chart-fill text-warning me-2"></i>Skill Gap Analysis</h6>
+                        <p class="small fw-semibold text-muted">Missing Technical Skills</p>
+                        <div class="keyword-chips" id="missing-tech-skills"></div>
+                        <p class="small fw-semibold text-muted mt-3">Missing Soft Skills</p>
+                        <div class="keyword-chips" id="missing-soft-skills"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <h6 class="mb-3"><i class="bi bi-spell-check text-info me-2"></i>Grammar &amp; Formatting</h6>
+                        <ul class="result-list" id="grammar-list"></ul>
+                        <h6 class="mt-3 mb-2 small fw-semibold text-muted">Formatting Suggestions</h6>
+                        <ul class="result-list" id="formatting-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Improved Summary -->
+            <div class="glass-card p-4 mb-4">
+                <h6 class="mb-3"><i class="bi bi-stars me-2 text-warning"></i>AI-Improved Summary</h6>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <p class="small fw-semibold text-muted mb-1">Improved Summary</p>
+                        <div class="improved-text-box" id="improved-summary">–</div>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="small fw-semibold text-muted mb-1">Suggested Action Verbs</p>
+                        <div class="keyword-chips" id="action-verbs"></div>
+                        <p class="small fw-semibold text-muted mt-3 mb-1">Improvement Tips</p>
+                        <ul class="result-list" id="improvement-tips"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="static/js/firebase_config.js"></script>
+    <script type="module" src="static/js/auth.js"></script>
+    <script type="module" src="static/js/analyze.js"></script>
+</body>
+
+</html>
