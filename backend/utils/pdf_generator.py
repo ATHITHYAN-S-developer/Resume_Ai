@@ -28,14 +28,19 @@ def generate_resume_pdf(resume_data: dict, template_name: str = "resume_template
 
         # Convert HTML to PDF using xhtml2pdf
         pdf_buffer = io.BytesIO()
-        result = pisa.CreatePDF(
+        pisa_status = pisa.CreatePDF(
             src=html_content,
             dest=pdf_buffer,
             encoding="utf-8"
         )
-        if result.err:
-            raise RuntimeError(f"xhtml2pdf error code: {result.err}")
+        
+        if pisa_status.err:
+            print(f"ERROR: xhtml2pdf failed: {pisa_status.err}")
+            # Log first 500 chars of HTML to debug if it's a template error
+            print(f"DEBUG HTML SNIPPET: {html_content[:500]}...")
+            raise RuntimeError(f"xhtml2pdf error code: {pisa_status.err}")
 
         return pdf_buffer.getvalue()
     except Exception as e:
+        print(f"ERROR in generate_resume_pdf: {str(e)}")
         raise RuntimeError(f"PDF generation failed: {str(e)}")
