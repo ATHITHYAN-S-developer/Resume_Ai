@@ -11,7 +11,7 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-
 
 // ⚠️ Replace with your Firebase project config
 const firebaseConfig = {
- 
+
 
   apiKey: "AIzaSyBdegVyEpSmpSpRffC9xwrzWp6wifI-w74",
   authDomain: "resume-analyzer-52bff.firebaseapp.com",
@@ -29,5 +29,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
-// Backend API Base URL — change this to your deployed backend URL
-export const API_BASE = "http://localhost:5000/api";
+// Backend API Base URL — Dynamic detection for monolith deployment
+export const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://127.0.0.1:5000/api"
+  : "/api"; // Relative path for production (Render monolith)

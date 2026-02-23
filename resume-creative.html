@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Bold Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%);
+            padding: 2rem;
+            color: #0a0e27;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-item {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .main {
+            background: white;
+            padding: 2.5rem;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #0a0e27;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            font-size: 1rem;
+            color: #ff4d6d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, #00d9ff 0%, #39ff14 100%);
+            width: 100px;
+            margin: 1rem 0;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ff4d6d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .job-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0a0e27;
+        }
+
+        .job-date {
+            font-size: 0.85rem;
+            color: #99a0b8;
+            font-weight: 600;
+        }
+
+        .job-company {
+            font-size: 0.9rem;
+            color: #00d9ff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-description {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-left: 0.5rem;
+        }
+
+        .summary {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.8;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(57, 255, 20, 0.05) 100%);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #00d9ff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                padding: 1.5rem;
+            }
+
+            .main {
+                padding: 1.5rem;
+            }
+
+            .name {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Contact</div>
+                <div class="sidebar-item">📧 alex.creative@email.com</div>
+                <div class="sidebar-item">📱 +1 (555) 987-6543</div>
+                <div class="sidebar-item">📍 New York, NY</div>
+                <div class="sidebar-item">🌐 behance.net/alexcreative</div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Tools</div>
+                <div class="sidebar-item">
+                    <span class="skill-badge">Figma</span>
+                    <span class="skill-badge">Adobe CC</span>
+                    <span class="skill-badge">Sketch</span>
+                </div>
+                <div class="sidebar-item" style="margin-top: 0.5rem;">
+                    <span class="skill-badge">Web Design</span>
+                    <span class="skill-badge">Branding</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Skills</div>
+                <div class="sidebar-item">UI/UX Design</div>
+                <div class="sidebar-item">Brand Identity</div>
+                <div class="sidebar-item">Print Design</div>
+                <div class="sidebar-item">Motion Graphics</div>
+                <div class="sidebar-item">Illustration</div>
+                <div class="sidebar-item">Web Development</div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Languages</div>
+                <div class="sidebar-item">English (Native)</div>
+                <div class="sidebar-item">Spanish (Fluent)</div>
+                <div class="sidebar-item">French (Basic)</div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+            <div class="header">
+                <div class="name">ALEX RIVERA</div>
+                <div class="title">Creative Director & Designer</div>
+                <div class="divider"></div>
+            </div>
+
+            <div class="section">
+                <div class="summary">
+                    Award-winning creative director with 10+ years of experience in branding, digital design, and creative strategy. Passionate about creating beautiful, functional solutions that solve real problems. Proven ability to lead creative teams and deliver exceptional results for globally recognized brands.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🎯 Professional Experience</div>
+                
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">Creative Director</div>
+                        <div class="job-date">2020 - Present</div>
+                    </div>
+                    <div class="job-company">Design Studio Co.</div>
+                    <ul class="job-description" style="list-style: none;">
+                        <li>• Led creative team of 8 designers across multiple projects</li>
+                        <li>• Won 5 international design awards for innovative campaigns</li>
+                        <li>• Increased client satisfaction scores from 4.2 to 4.9/5</li>
+                    </ul>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">Senior Designer</div>
+                        <div class="job-date">2017 - 2020</div>
+                    </div>
+                    <div class="job-company">Brand & Co. Agency</div>
+                    <ul class="job-description" style="list-style: none;">
+                        <li>• Designed complete visual identity systems for 15+ brands</li>
+                        <li>• Created digital campaigns reaching 50M+ impressions</li>
+                        <li>• Mentored 3 junior designers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🎓 Education</div>
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-title">BFA in Graphic Design</div>
+                        <div class="job-date">2017</div>
+                    </div>
+                    <div class="job-company">School of Visual Arts, NYC</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏆 Awards & Recognition</div>
+                <ul class="job-description" style="list-style: none;">
+                    <li>• Red Dot Design Award 2023</li>
+                    <li>• Adobe Design Excellence Award 2022</li>
+                    <li>• Featured in Design Observer, CNNDesign</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

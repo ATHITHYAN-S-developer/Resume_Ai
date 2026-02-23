@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Templates Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d9ff;
+            --secondary: #39ff14;
+            --accent: #ff4d6d;
+            --neon-blue: #00d9ff;
+            --neon-pink: #ff006e;
+            --dark-bg: #0a0e27;
+            --card-bg: #141b2d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(57, 255, 20, 0.1));
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .template-card {
+            background: rgba(20, 27, 45, 0.6);
+            border: 2px solid #1f2937;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .template-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.2);
+        }
+
+        .template-preview {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .template-info {
+            padding: 1.5rem;
+        }
+
+        .template-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-description {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .template-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .section {
+            margin-top: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .template-detail {
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(31, 41, 55, 0.5);
+            border-radius: 0.75rem;
+            border: 1px solid #1f2937;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .feature-text {
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume Templates</h1>
+            <p class="subtitle">Choose your perfect resume design • Powered by HyperUI & NeonFlux</p>
+        </header>
+
+        <!-- TEMPLATES SHOWCASE -->
+        <div class="templates-grid">
+            <!-- Template 1: Modern Minimal -->
+            <div class="template-card" onclick="openTemplate('template-modern')">
+                <div class="template-preview">📄</div>
+                <div class="template-info">
+                    <div class="template-name">Modern Minimal</div>
+                    <p class="template-description">Clean, professional, and minimalist design. Perfect for tech professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Minimal</span>
+                        <span class="tag">Tech</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 2: Creative Bold -->
+            <div class="template-card" onclick="openTemplate('template-creative')">
+                <div class="template-preview">🎨</div>
+                <div class="template-info">
+                    <div class="template-name">Creative Bold</div>
+                    <p class="template-description">Eye-catching design with vibrant colors. Great for designers and creatives.</p>
+                    <div class="template-tags">
+                        <span class="tag">Creative</span>
+                        <span class="tag">Bold</span>
+                        <span class="tag">Design</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 3: Executive Pro -->
+            <div class="template-card" onclick="openTemplate('template-executive')">
+                <div class="template-preview">💼</div>
+                <div class="template-info">
+                    <div class="template-name">Executive Pro</div>
+                    <p class="template-description">Premium, sophisticated layout. Ideal for executives and managers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Professional</span>
+                        <span class="tag">Executive</span>
+                        <span class="tag">Luxury</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 4: Tech Developer -->
+            <div class="template-card" onclick="openTemplate('template-developer')">
+                <div class="template-preview">💻</div>
+                <div class="template-info">
+                    <div class="template-name">Tech Developer</div>
+                    <p class="template-description">Dark theme with code-inspired layout. Perfect for developers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Developer</span>
+                        <span class="tag">Dark</span>
+                        <span class="tag">Tech</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 5: Startup Founder -->
+            <div class="template-card" onclick="openTemplate('template-startup')">
+                <div class="template-preview">🚀</div>
+                <div class="template-info">
+                    <div class="template-name">Startup Founder</div>
+                    <p class="template-description">Modern, energetic layout with gradient accents. For entrepreneurs.</p>
+                    <div class="template-tags">
+                        <span class="tag">Startup</span>
+                        <span class="tag">Energetic</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 6: Academic Scholar -->
+            <div class="template-card" onclick="openTemplate('template-academic')">
+                <div class="template-preview">🎓</div>
+                <div class="template-info">
+                    <div class="template-name">Academic Scholar</div>
+                    <p class="template-description">Formal, research-focused layout. Perfect for academics and scholars.</p>
+                    <div class="template-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Formal</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="btn btn-secondary">Customize</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEMPLATE FEATURES -->
+        <section class="section">
+            <h2 class="section-title">Template Features</h2>
+            <div class="template-detail">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">What's Included in Each Template?</h3>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span class="feature-text"><strong>ATS-Optimized</strong> - Pass through applicant tracking systems</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <span class="feature-text"><strong>Fully Responsive</strong> - Perfect on all devices</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">🎨</span>
+                        <span class="feature-text"><strong>Customizable Colors</strong> - Match your personal brand</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">📥</span>
+                        <span class="feature-text"><strong>Easy Export</strong> - Download as PDF instantly</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <span class="feature-text"><strong>Lightning Fast</strong> - High performance guaranteed</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <span class="feature-text"><strong>Secure & Private</strong> - Your data stays with you</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- COMPARISON TEXT -->
+        <section class="section">
+            <h2 class="section-title">Choose Your Style</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div class="template-detail">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">HyperUI Themes</h3>
+                    <p style="color: #9ca3af; margin-bottom: 1rem;">Modern, clean, minimal aesthetic with smooth gradients and rounded corners.</p>
+                    <ul style="list-style: none; color: #9ca3af;">
+                        <li>✓ Modern Minimal Template</li>
+                        <li>✓ Creative Bold Template</li>
+                        <li>✓ Startup Founder Template</li>
+                    </ul>
+                </div>
+                <div class="template-detail">
+                    <h3 style="color: var(--neon-pink); margin-bottom: 1rem;">NeonFlux Themes</h3>
+                    <p style="color: #9ca3af; margin-bottom: 1rem;">Cyberpunk, glowing neon elements with futuristic edge and high-tech vibes.</p>
+                    <ul style="list-style: none; color: #9ca3af;">
+                        <li>✓ Tech Developer Template</li>
+                        <li>✓ Executive Pro Template</li>
+                        <li>✓ Academic Scholar Template</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 3rem 0; border-top: 1px solid #1f2937;">
+            <p style="color: #9ca3af;">Build your perfect resume with HyperUI & NeonFlux • 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTemplate(templateId) {
+            const templates = {
+                'template-modern': 'resume-modern.html',
+                'template-creative': 'resume-creative.html',
+                'template-executive': 'resume-executive.html',
+                'template-developer': 'resume-developer.html',
+                'template-startup': 'resume-startup.html',
+                'template-academic': 'resume-academic.html'
+            };
+            
+            window.location.href = templates[templateId] || '#';
+        }
+    </script>
+</body>
+</html>

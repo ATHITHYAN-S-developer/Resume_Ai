@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Founder Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-name {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .founder-tagline {
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.95;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section {
+            border-radius: 1rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            font-size: 1.25rem;
+        }
+
+        .intro-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .milestone {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .milestone-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .milestone-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .milestone-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .exp-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 0.35rem;
+        }
+
+        .exp-company {
+            font-size: 0.95rem;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-period {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+            margin-left: 1rem;
+        }
+
+        .list-item {
+            margin-bottom: 0.35rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #667eea;
+            border-radius: 0.5rem;
+            color: #667eea;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .list-item-text {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dotted #e5e7eb;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .stat-value {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-info {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .milestone {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-name {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="founder-name">SARAH CHEN</div>
+                <div class="founder-tagline">Founder & CEO • AI/ML Entrepreneur • Tech Innovator</div>
+                <div class="header-info">
+                    <span class="info-item">💼 Founder of 2 Series-A startups</span>
+                    <span class="info-item">📧 sarah@techventure.com</span>
+                    <span class="info-item">📱 +1 (555) 666-7777</span>
+                    <span class="info-item">🌍 linkedin.com/in/sarahchen</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="main">
+                <div class="section">
+                    <p class="intro-text">
+                        Serial entrepreneur and tech founder with proven track record of building and scaling AI-driven startups. Passionate about solving complex problems through innovation. Raised $50M+ in venture capital across multiple companies. Expert in product strategy, team building, and market expansion.
+                    </p>
+                    <div class="milestone">
+                        <div class="milestone-item">
+                            <div class="milestone-number">$50M+</div>
+                            <div class="milestone-label">Funding Raised</div>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="milestone-number">500+</div>
+                            <div class="milestone-label">Team Members</div>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="milestone-number">2</div>
+                            <div class="milestone-label">Unicorn Startups</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🚀</span>
+                        Entrepreneurial Journey
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-title">Co-Founder & CEO</div>
+                        <div class="exp-company">NeuralAI Technologies</div>
+                        <div class="exp-period">2022 - Present</div>
+                        <div class="exp-description">
+                            <div class="list-item">• Raised $30M Series A funding in first 18 months</div>
+                            <div class="list-item">• Scaled team from 3 to 120+ engineers globally</div>
+                            <div class="list-item">• Built AI platform serving 500+ enterprise clients</div>
+                            <div class="list-item">• Achieved $50M ARR within 3 years</div>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-title">Founder & CEO</div>
+                        <div class="exp-company">DataFlow Analytics</div>
+                        <div class="exp-period">2019 - 2022</div>
+                        <div class="exp-description">
+                            <div class="list-item">• Founded company with $0 bootstrapped to $5M revenue</div>
+                            <div class="list-item">• Raised $20M Series A from top-tier VCs</div>
+                            <div class="list-item">• Exited via acquisition by major tech corporation</div>
+                            <div class="list-item">• Built and led team of 80+ employees</div>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-title">Senior Product Manager</div>
+                        <div class="exp-company">Google AI/ML Division</div>
+                        <div class="exp-period">2017 - 2019</div>
+                        <div class="exp-description">
+                            <div class="list-item">• Led 15-person product team across 3 time zones</div>
+                            <div class="list-item">• Shipped 5 major ML features impacting 2B+ users</div>
+                            <div class="list-item">• Increased product engagement by 45%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <span class="section-icon">🎓</span>
+                        Education
+                    </div>
+                    <div class="experience-item" style="margin: 0;">
+                        <div class="exp-company">Master's in Computer Science (AI/ML Specialization)</div>
+                        <div class="exp-period" style="margin-bottom: 0;">Stanford University • 2017</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <div class="sidebar-title">🎯 Core Competencies</div>
+                    <span class="tag">Product Strategy</span>
+                    <span class="tag">Fundraising</span>
+                    <span class="tag">Leadership</span>
+                    <span class="tag">AI/ML</span>
+                    <span class="tag">B2B SaaS</span>
+                    <span class="tag">Go-to-Market</span>
+                    <span class="tag">Team Building</span>
+                    <span class="tag">Scaling</span>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">📊 Key Metrics</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Companies Founded</span>
+                        <span class="stat-value">2</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Funding Raised</span>
+                        <span class="stat-value">$50M+</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Team Built</span>
+                        <span class="stat-value">500+</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Exits</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">🏆 Recognition</div>
+                    <div class="list-item-text">• Forbes 30 Under 30</div>
+                    <div class="list-item-text">• TechCrunch Disruptor</div>
+                    <div class="list-item-text">• Y Combinator Founder</div>
+                    <div class="list-item-text">• Featured in MIT Review</div>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">🔗 Board & Advisory</div>
+                    <div class="list-item-text">• TechFund VC Board Member</div>
+                    <div class="list-item-text">• Stanford Advisory Group</div>
+                    <div class="list-item-text">• AI Ethics Committee</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

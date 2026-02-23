@@ -8,41 +8,39 @@ A full-stack AI-powered resume builder and analyzer built with **Flask + Firebas
 
 ```
 NewPro/
+├── .gitignore
+├── README.md                  ← Setup + Deployment guide
+├── index.html                 ← Landing page
+├── analyze.html               ← Upload page
+├── create_resume.html         ← Wizard page
+├── dashboard.html             ← User dashboard
+├── history.html               ← Resume history
+├── login.html                 ← Auth pages
+├── profile.html
+├── signup.html
+├── static/                    ← CSS and JS files
+│   ├── css/style.css
+│   └── js/
+│       ├── firebase_config.js
+│       ├── auth.js
+│       ├── dashboard.js
+│       ├── create_resume.js
+│       ├── analyze.js
+│       ├── profile.js
+│       ├── history.js
+│       └── particles.js
 ├── backend/
-│   ├── app.py
+│   ├── app.py                 ← Flask app (Serves API + Frontend)
 │   ├── requirements.txt
 │   ├── .env.example
 │   ├── routes/
-│   │   ├── __init__.py
-│   │   └── resume.py
+│   │   └── resume.py          ← API logic
 │   ├── utils/
-│   │   ├── __init__.py
 │   │   ├── gemini_client.py
 │   │   ├── file_parser.py
-│   │   └── pdf_generator.py
+│   │   └── pdf_generator.py   ← xhtml2pdf engine
 │   └── templates/
 │       └── resume_template.html
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── signup.html
-│   ├── dashboard.html
-│   ├── create_resume.html
-│   ├── analyze.html
-│   ├── profile.html
-│   ├── history.html
-│   └── static/
-│       ├── css/style.css
-│       └── js/
-│           ├── firebase_config.js
-│           ├── auth.js
-│           ├── dashboard.js
-│           ├── create_resume.js
-│           ├── analyze.js
-│           ├── profile.js
-│           ├── history.js
-│           └── particles.js
-└── .gitignore
 ```
 
 ---
@@ -56,7 +54,7 @@ NewPro/
 3. Enable **Firestore Database** → Start in test mode
 4. Go to **Project Settings** → **Service Accounts** → Generate new private key → Save as `backend/serviceAccountKey.json`
 5. Go to **Project Settings** → **General** → **Your Apps** → Add a Web App
-6. Copy the Firebase config and paste it into `frontend/static/js/firebase_config.js`:
+6. Copy the Firebase config and paste it into `static/js/firebase_config.js`:
 
 ```js
 const firebaseConfig = {
@@ -90,50 +88,27 @@ FRONTEND_URL=http://localhost:8080
 
 ## 🚀 Running Locally
 
-### Backend
-
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 ```
-Backend runs at: `http://localhost:5000`
-
-### Frontend
-
-```bash
-cd frontend
-python -m http.server 8080
-```
-Open: `http://localhost:8080`
-
-> **Note:** `API_BASE` in `firebase_config.js` is set to `http://localhost:5000/api` by default.
+App runs at: `http://localhost:5000` (Now serves both Frontend and API)
 
 ---
 
-## ☁️ Deployment
+## ☁️ Deployment (Render Monolith)
 
-### Backend → Render.com
-
-1. Push code to GitHub
-2. Go to [Render](https://render.com) → New Web Service → Connect GitHub repo
+1. Push code to GitHub.
+2. Go to [Render](https://render.com) → **New Web Service**.
 3. Set **Root Directory** to `backend`
-4. Build command: `pip install -r requirements.txt`
-5. Start command: `waitress-serve --port=5000 --call app:create_app`
-6. Add environment variables in Render dashboard (same as `.env`)
-7. Upload `serviceAccountKey.json` content as env var `FIREBASE_SERVICE_ACCOUNT_KEY_JSON` and adjust `app.py` to read from it
-
-### Frontend → Netlify
-
-1. Go to [Netlify](https://netlify.com) → New Site → Deploy from GitHub
-2. Set **Publish directory** to `frontend`
-3. No build command needed (static files)
-4. Update `API_BASE` in `firebase_config.js` to your Render backend URL
-5. Add `frontend/netlify.toml` for SPA routing if needed
-
-### Environment Variables on Netlify
-
-No server-side env vars needed for frontend — Firebase config is embedded in `firebase_config.js`.
+4. **Build Command**: `pip install -r requirements.txt`
+5. **Start Command**: `waitress-serve --port=$PORT --call app:create_app`
+6. Add Environment Variables in Render:
+   - `GEMINI_API_KEY`: Your key.
+   - `FLASK_ENV`: `production`
+   - `FIREBASE_SERVICE_ACCOUNT_JSON`: Content of your `serviceAccountKey.json`.
+7. Your app is now live on a single URL! (e.g., `https://your-app.onrender.com`)
 
 ---
 
@@ -175,3 +150,6 @@ git push -u origin main
 | 📊 ATS Score Ring | Animated SVG score visualization |
 | 🗂️ History | All resumes & reports saved to Firestore |
 | 👤 User Profile | Edit name, change password, view stats |
+
+
+resume-ai-lwu4.vercel.app

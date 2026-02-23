@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperUI & NeonFlux - UI Themes & Resume Templates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
+            color: #f0f4ff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 3rem 0;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 50%, #ff4d6d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #a0a8ff;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #00d9ff;
+            color: #00d9ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .section {
+            margin: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            border-color: #00d9ff;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f0f4ff;
+        }
+
+        .card-description {
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features li {
+            color: #a0a8ff;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-features li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%);
+            color: #000;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .template-card {
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .template-card:hover {
+            border-color: #00d9ff;
+            transform: translateY(-4px);
+        }
+
+        .template-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .template-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .template-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid #00d9ff;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            color: #00d9ff;
+            font-weight: 600;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(57, 255, 20, 0.1) 100%);
+            font-weight: 700;
+            color: #00d9ff;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid #1f2937;
+            margin-top: 5rem;
+            color: #6b7280;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: rgba(20, 27, 45, 0.6);
+            border: 1px solid #1f2937;
+            border-radius: 1rem;
+            border-left: 3px solid #00d9ff;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-name {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">✨⚡</div>
+            <h1>HyperUI & NeonFlux</h1>
+            <p class="subtitle">Premium Gen Z UI Themes + 6 Professional Resume Templates</p>
+            <div class="cta-buttons">
+                <a href="hyperui.html" class="btn btn-primary">🌟 Explore HyperUI</a>
+                <a href="neonflux.html" class="btn btn-primary">⚡ Try NeonFlux</a>
+                <a href="resume-templates.html" class="btn btn-secondary">📄 Resume Templates</a>
+            </div>
+        </header>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Premium Themes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Resume Templates</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Customizable</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">95+</div>
+                <div class="stat-label">Lighthouse Score</div>
+            </div>
+        </div>
+
+        <!-- THEMES SECTION -->
+        <section class="section">
+            <h2 class="section-title">🎨 Themes</h2>
+            
+            <div class="grid-2">
+                <!-- HyperUI Card -->
+                <div class="card">
+                    <div class="card-icon">🌟</div>
+                    <div class="card-title">HyperUI</div>
+                    <p class="card-description">
+                        Ultra-modern, clean, minimal-yet-bold Gen Z design. Perfect for professional applications with smooth gradients, rounded cards, and lightning-fast performance.
+                    </p>
+                    <ul class="card-features">
+                        <li>Animated counters & interactive stats</li>
+                        <li>Floating action button</li>
+                        <li>Smooth sidebar navigation</li>
+                        <li>Gradient text & effects</li>
+                        <li>Fully responsive design</li>
+                        <li>GPU-accelerated animations</li>
+                    </ul>
+                    <a href="hyperui.html" class="card-btn">View Demo →</a>
+                </div>
+
+                <!-- NeonFlux Card -->
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">NeonFlux</div>
+                    <p class="card-description">
+                        Cyberpunk aesthetic with glowing neon elements and futuristic vibes. Perfect for tech-forward platforms, gaming, and dev tools requiring high-energy design.
+                    </p>
+                    <ul class="card-features">
+                        <li>Animated particle background</li>
+                        <li>Neon glowing borders</li>
+                        <li>Glitch button effects</li>
+                        <li>Neon progress bars</li>
+                        <li>Cyberpunk typography</li>
+                        <li>High-energy microinteractions</li>
+                    </ul>
+                    <a href="neonflux.html" class="card-btn">View Demo →</a>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; margin: 3rem 0 2rem; text-align: center; background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Key Features</h3>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-name">Lightning Fast</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">Optimized animations, minimal JS, GPU acceleration</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-name">Beautiful Design</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">Modern gradients, smooth transitions, premium feel</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-name">Fully Responsive</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">Mobile, tablet, desktop - perfect on all screens</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-name">Easy to Customize</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">CSS variables, simple editing, copy-paste ready</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌙</div>
+                    <div class="feature-name">Dark-First Design</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">Modern aesthetic, easier on the eyes</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">♿</div>
+                    <div class="feature-name">Accessible</div>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">WCAG compliant, inclusive design</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME TEMPLATES SECTION -->
+        <section class="section">
+            <h2 class="section-title">📄 Resume Templates</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #9ca3af; margin-bottom: 3rem;">
+                6 professionally designed resume templates for every career path
+            </p>
+
+            <div class="grid-3">
+                <div class="template-card">
+                    <div class="template-icon">📄</div>
+                    <div class="template-name">Modern Minimal</div>
+                    <p class="template-desc">Clean & professional</p>
+                    <div class="template-tags">
+                        <span class="tag">Minimal</span>
+                        <span class="tag">Tech</span>
+                    </div>
+                    <a href="resume-modern.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">🎨</div>
+                    <div class="template-name">Creative Bold</div>
+                    <p class="template-desc">Vibrant & eye-catching</p>
+                    <div class="template-tags">
+                        <span class="tag">Creative</span>
+                        <span class="tag">Bold</span>
+                    </div>
+                    <a href="resume-creative.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">💼</div>
+                    <div class="template-name">Executive Pro</div>
+                    <p class="template-desc">Premium & sophisticated</p>
+                    <div class="template-tags">
+                        <span class="tag">Professional</span>
+                        <span class="tag">Executive</span>
+                    </div>
+                    <a href="resume-executive.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">💻</div>
+                    <div class="template-name">Tech Developer</div>
+                    <p class="template-desc">Dark & code-inspired</p>
+                    <div class="template-tags">
+                        <span class="tag">Developer</span>
+                        <span class="tag">Tech</span>
+                    </div>
+                    <a href="resume-developer.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">🚀</div>
+                    <div class="template-name">Startup Founder</div>
+                    <p class="template-desc">Modern & energetic</p>
+                    <div class="template-tags">
+                        <span class="tag">Startup</span>
+                        <span class="tag">Founder</span>
+                    </div>
+                    <a href="resume-startup.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">🎓</div>
+                    <div class="template-name">Academic Scholar</div>
+                    <p class="template-desc">Formal & research-focused</p>
+                    <div class="template-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <a href="resume-academic.html" class="card-btn" style="font-size: 0.9rem;">Preview</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="resume-templates.html" class="btn btn-primary">Browse All Templates</a>
+            </div>
+        </section>
+
+        <!-- COMPARISON SECTION -->
+        <section class="section">
+            <h2 class="section-title">Theme Comparison</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>HyperUI</th>
+                        <th>NeonFlux</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Aesthetic</strong></td>
+                        <td>Modern, Clean, Minimal</td>
+                        <td>Cyberpunk, High-Tech, Neon</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Color Scheme</strong></td>
+                        <td>Blue, Green, Coral</td>
+                        <td>Blue, Purple, Pink</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Animation Style</strong></td>
+                        <td>Smooth, Subtle, Elegant</td>
+                        <td>Glowing, Dramatic, High-Energy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Typography</strong></td>
+                        <td>Modern Sans-Serif</td>
+                        <td>Monospace-Inspired</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best Use Cases</strong></td>
+                        <td>Business, SaaS, Corporate</td>
+                        <td>Gaming, Crypto, Dev Tools</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target Users</strong></td>
+                        <td>Professionals, Designers</td>
+                        <td>Developers, Gamers, Tech</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Performance</strong></td>
+                        <td>95+ Lighthouse</td>
+                        <td>95+ Lighthouse</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Responsiveness</strong></td>
+                        <td>✅ Fully Responsive</td>
+                        <td>✅ Fully Responsive</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- GETTING STARTED -->
+        <section class="section">
+            <h2 class="section-title">🚀 Getting Started</h2>
+            
+            <div style="background: rgba(20, 27, 45, 0.6); border: 1px solid #1f2937; border-radius: 1.5rem; padding: 2rem; margin: 2rem 0;">
+                <h3 style="color: #00d9ff; margin-bottom: 1rem; font-size: 1.3rem;">3 Simple Steps</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">1️⃣</div>
+                        <h4 style="margin-bottom: 0.5rem;">Choose Your Theme</h4>
+                        <p style="color: #9ca3af; font-size: 0.95rem;">Pick HyperUI for modern elegance or NeonFlux for cyberpunk energy</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">2️⃣</div>
+                        <h4 style="margin-bottom: 0.5rem;">Customize</h4>
+                        <p style="color: #9ca3af; font-size: 0.95rem;">Edit colors, fonts, and content with simple CSS variables</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">3️⃣</div>
+                        <h4 style="margin-bottom: 0.5rem;">Deploy</h4>
+                        <p style="color: #9ca3af; font-size: 0.95rem;">Copy, paste, and go live instantly. No build process needed!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCUMENTS -->
+        <section class="section">
+            <h2 class="section-title">📚 Documentation</h2>
+            
+            <div style="background: rgba(20, 27, 45, 0.6); border: 1px solid #1f2937; border-radius: 1.5rem; padding: 2rem;">
+                <p style="color: #9ca3af; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                    ✨ For complete customization guide, color schemes, and advanced tips, check out:
+                </p>
+                <a href="THEMES_AND_TEMPLATES_GUIDE.md" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #00d9ff 0%, #39ff14 100%); color: #000; border-radius: 0.75rem; text-decoration: none; font-weight: 700; margin-bottom: 1rem;">
+                    📖 Complete Guide & Documentation
+                </a>
+                <p style="color: #6b7280; margin-top: 1rem; font-size: 0.9rem;">
+                    Contains color palettes, customization tips, file structure, and more!
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="section">
+            <div style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(57, 255, 20, 0.1) 100%); border: 1px solid #00d9ff; border-radius: 1.5rem; padding: 3rem 2rem; text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Build Something Amazing?</h2>
+                <p style="color: #9ca3af; margin-bottom: 2rem; font-size: 1.1rem;">
+                    Start with HyperUI or NeonFlux today. Both themes are production-ready and fully customizable.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="hyperui.html" class="btn btn-primary" style="padding: 1rem 2.5rem;">🌟 Launch HyperUI</a>
+                    <a href="neonflux.html" class="btn btn-primary" style="padding: 1rem 2.5rem;">⚡ Launch NeonFlux</a>
+                    <a href="resume-templates.html" class="btn btn-secondary" style="padding: 1rem 2.5rem;">📄 Browse Resumes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p style="margin-bottom: 1rem; font-size: 1rem; color: #a0a8ff;">
+                Made with ❤️ • HyperUI & NeonFlux • 2025
+            </p>
+            <p style="font-size: 0.9rem;">
+                🎨 Premium Gen Z UI Design System • 📄 6 Professional Resume Templates
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; color: #6b7280;">
+                All designs are production-ready, fully responsive, and optimized for performance.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

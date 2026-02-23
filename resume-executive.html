@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Pro Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border-radius: 0.25rem;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .full-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .executive-title {
+            font-size: 1.1rem;
+            color: #00d9ff;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .introduction {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .job {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title-large {
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            color: #00d9ff;
+            font-weight: 600;
+        }
+
+        .job-period {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .job-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-left: 0.5rem;
+        }
+
+        .bullet-point {
+            margin-bottom: 0.35rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 0.375rem;
+            border-left: 3px solid #00d9ff;
+        }
+
+        .sidebar-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-item {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .competency-bar {
+            margin-bottom: 0.75rem;
+        }
+
+        .competency-label {
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+
+        .competency-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .competency-level {
+            color: #00d9ff;
+        }
+
+        .bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d9ff, #39ff14);
+            border-radius: 3px;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                gap: 1rem;
+            }
+
+            .full-name {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <div class="header-content">
+                <div class="full-name">VICTORIA CATHERINE MORGAN</div>
+                <div class="executive-title">Chief Executive Officer • Technology & Innovation</div>
+                <div class="contact-info">
+                    <span class="contact-item">victoria.morgan@email.com</span>
+                    <span class="contact-item">+1 (555) 234-5678</span>
+                    <span class="contact-item">San Francisco, CA</span>
+                    <span class="contact-item">linkedin.com/in/vcmorgan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div>
+                <div class="section">
+                    <p class="introduction">
+                        Visionary Chief Executive Officer with 20+ years of experience driving organizational transformation, revenue growth, and market innovation. Proven expertise in technology leadership, strategic planning, and building high-performance teams across global markets. Track record of scaling companies from $10M to $500M+ in valuations.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Executive Experience</div>
+
+                    <div class="job">
+                        <div class="job-title-large">Chief Executive Officer</div>
+                        <div class="company-info">
+                            <span class="company-name">TechVision Global Inc.</span>
+                            <span class="job-period">2018 - Present</span>
+                        </div>
+                        <div class="job-description">
+                            <div class="bullet-point">• Led company through strategic IPO, raising $200M in market capitalization</div>
+                            <div class="bullet-point">• Grew annual revenue from $80M to $320M (300% growth) in 5 years</div>
+                            <div class="bullet-point">• Established company presence in 15 international markets</div>
+                            <div class="bullet-point">• Built and mentored executive team of 12 C-suite leaders</div>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title-large">President, Technology Division</div>
+                        <div class="company-info">
+                            <span class="company-name">Fortune 500 Corp.</span>
+                            <span class="job-period">2014 - 2018</span>
+                        </div>
+                        <div class="job-description">
+                            <div class="bullet-point">• Directed $2B technology division with 500+ employees</div>
+                            <div class="bullet-point">• Delivered 8 breakthrough products generating $500M+ in revenue</div>
+                            <div class="bullet-point">• Improved operational efficiency by 45% through digital transformation</div>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title-large">Vice President, Strategic Innovation</div>
+                        <div class="company-info">
+                            <span class="company-name">Digital Enterprises Ltd.</span>
+                            <span class="job-period">2010 - 2014</span>
+                        </div>
+                        <div class="job-description">
+                            <div class="bullet-point">• Spearheaded innovation initiatives resulting in 15 patents</div>
+                            <div class="bullet-point">• Established venture capital fund with $100M portfolio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education & Credentials</div>
+                    <div class="job">
+                        <div class="job-title-large">MBA, Harvard Business School</div>
+                        <div class="job-period">2010</div>
+                    </div>
+                    <div class="job" style="margin-bottom: 0;">
+                        <div class="job-title-large">BS, Computer Science, Stanford University</div>
+                        <div class="job-period">2006</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Core Competencies</div>
+                    <div class="competency-bar">
+                        <div class="competency-label">
+                            <span class="competency-name">Strategic Leadership</span>
+                            <span class="competency-level">Expert</span>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="competency-bar">
+                        <div class="competency-label">
+                            <span class="competency-name">P&L Management</span>
+                            <span class="competency-level">Expert</span>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-fill" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="competency-bar">
+                        <div class="competency-label">
+                            <span class="competency-name">M&A Strategy</span>
+                            <span class="competency-level">Advanced</span>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="competency-bar">
+                        <div class="competency-label">
+                            <span class="competency-name">Digital Transformation</span>
+                            <span class="competency-level">Expert</span>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Board Memberships</div>
+                    <div class="sidebar-item">Tech Innovation Fund</div>
+                    <div class="sidebar-item">Stanford School of Business</div>
+                    <div class="sidebar-item">Global Tech Council</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Awards & Recognition</div>
+                    <div class="sidebar-item">Fortune 40 Under 40 (2022)</div>
+                    <div class="sidebar-item">Tech Leader of Year (2021)</div>
+                    <div class="sidebar-item">Ernst & Young World Entrepreneur (2019)</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            References and additional certifications available upon request.
+        </footer>
+    </div>
+</body>
+</html>

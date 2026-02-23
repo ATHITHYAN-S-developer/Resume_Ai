@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Scholar Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .scholar-name {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .credentials {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 0;
+        }
+
+        .main {
+            padding: 2.5rem;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar {
+            background: #f9f9f9;
+            padding: 2.5rem;
+            border-left: 3px solid #3498db;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #3498db;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .research-summary {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f0f8ff;
+            border-left: 3px solid #3498db;
+            line-height: 1.8;
+        }
+
+        .pub-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .pub-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-authors {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-venue {
+            color: #3498db;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-details {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .position-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .position-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .position-institution {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .position-period {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .position-details {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-left: 1rem;
+        }
+
+        .degree {
+            margin-bottom: 1rem;
+        }
+
+        .degree-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .degree-details {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .degree-info {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-section {
+            margin-bottom: 1.75rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-item {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.65rem;
+            background: #e8f4f8;
+            border: 1px solid #3498db;
+            border-radius: 0.25rem;
+            color: #2c3e50;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .main {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .sidebar {
+                border-left: none;
+                border-top: 3px solid #3498db;
+            }
+
+            .scholar-name {
+                font-size: 1.75rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="scholar-name">PROF. MARGARET ELIZABETH WILLIAMS, Ph.D.</div>
+            <div class="credentials">Professor of Computer Science and Artificial Intelligence</div>
+            <div class="contact-info">
+                <span class="contact-item">📧 m.williams@university.edu</span>
+                <span class="contact-item">📱 +1 (555) 333-4444</span>
+                <span class="contact-item">📍 Cambridge, MA</span>
+                <span class="contact-item">🔗 scholar.google.com/citations</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="main">
+                <div class="section">
+                    <div class="research-summary">
+                        Distinguished researcher with 18+ years of experience in machine learning, computer vision, and artificial intelligence. Published 120+ peer-reviewed papers with 5,000+ citations. Expert in deep learning architectures, transfer learning, and algorithmic optimization. Secured $8.5M in research funding. Mentor to 25+ Ph.D. students.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Research Publications (Selected)</div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">"Hierarchical Attention Networks for Document Classification"</div>
+                        <div class="pub-authors">Williams, M.E., Johnson, P., & Chen, L.</div>
+                        <div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence</div>
+                        <div class="pub-details">Vol. 45, No. 3, pp. 1234–1250, 2023. Impact Factor: 24.3</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">"Deep Reinforcement Learning for Resource Optimization"</div>
+                        <div class="pub-authors">Williams, M.E., Martinez, R., & Patel, S.</div>
+                        <div class="pub-venue">Proceedings of the 40th International Conference on Machine Learning</div>
+                        <div class="pub-details">ICML 2023, Honolulu, HI. Acceptance Rate: 26%</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">"Explainable AI: Bridging the Gap Between Performance and Interpretability"</div>
+                        <div class="pub-authors">Williams, M.E., Lee, K., & Thompson, A.</div>
+                        <div class="pub-venue">Journal of Artificial Intelligence Research</div>
+                        <div class="pub-details">Vol. 78, pp. 456–489, 2023. Citations: 1,200+</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <div class="pub-title">"Novel Architectures for Domain-Specific Language Models"</div>
+                        <div class="pub-authors">Williams, M.E., Smith, J., & Davis, R.</div>
+                        <div class="pub-venue">Proceedings of the 36th AAAI Conference on Artificial Intelligence</div>
+                        <div class="pub-details">AAAI 2022, Virtual. Best Paper Award</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Academic Positions</div>
+
+                    <div class="position-item">
+                        <div class="position-title">Professor & Department Chair</div>
+                        <div class="position-institution">Harvard University, School of Engineering and Applied Sciences</div>
+                        <div class="position-period">2019 - Present</div>
+                        <div class="position-details">
+                            • Lead department of 40+ faculty and 200+ students<br>
+                            • Established AI Research Lab with $3M annual budget<br>
+                            • Secured NSF CAREER grant ($1.2M, 5 years)
+                        </div>
+                    </div>
+
+                    <div class="position-item">
+                        <div class="position-title">Associate Professor</div>
+                        <div class="position-institution">MIT, Computer Science & Artificial Intelligence Lab</div>
+                        <div class="position-period">2015 - 2019</div>
+                        <div class="position-details">
+                            • Mentored 12 Ph.D. students to graduation<br>
+                            • Published 45+ peer-reviewed papers<br>
+                            • Received DOD MURI grant ($2.1M, 4 years)
+                        </div>
+                    </div>
+
+                    <div class="position-item">
+                        <div class="position-title">Assistant Professor</div>
+                        <div class="position-institution">Stanford University, Computer Science Department</div>
+                        <div class="position-period">2010 - 2015</div>
+                        <div class="position-details">
+                            • Established Machine Learning Research Group<br>
+                            • Published 30+ papers in top-tier venues<br>
+                            • NSF CAREER Award (2012)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education</div>
+
+                    <div class="degree">
+                        <div class="degree-title">Ph.D. in Computer Science</div>
+                        <div class="degree-details">Stanford University</div>
+                        <div class="degree-info">2010 • Dissertation: "Advanced Optimization Algorithms for Deep Learning"</div>
+                    </div>
+
+                    <div class="degree">
+                        <div class="degree-title">M.S. in Mathematics</div>
+                        <div class="degree-details">UC Berkeley</div>
+                        <div class="degree-info">2008</div>
+                    </div>
+
+                    <div class="degree">
+                        <div class="degree-title">B.S. in Computer Science (Summa Cum Laude)</div>
+                        <div class="degree-details">Carnegie Mellon University</div>
+                        <div class="degree-info">2006</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Research Interests</div>
+                    <span class="badge">Machine Learning</span>
+                    <span class="badge">Deep Learning</span>
+                    <span class="badge">Computer Vision</span>
+                    <span class="badge">NLP</span>
+                    <span class="badge">Optimization</span>
+                    <span class="badge">Explainable AI</span>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Research Impact</div>
+                    <div class="sidebar-item">📊 120+ Publications</div>
+                    <div class="sidebar-item">📈 5,000+ Citations</div>
+                    <div class="sidebar-item">💰 $8.5M Funding</div>
+                    <div class="sidebar-item">👥 25+ Ph.D. Mentees</div>
+                    <div class="sidebar-item">🏆 2 Best Paper Awards</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Awards & Honors</div>
+                    <div class="sidebar-item">IEEE Fellow (2022)</div>
+                    <div class="sidebar-item">NSF CAREER Award (2012)</div>
+                    <div class="sidebar-item">Best Paper Award, ICML (2023)</div>
+                    <div class="sidebar-item">AAAI Fellows (2020)</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Professional Service</div>
+                    <div class="sidebar-item">Editor-in-Chief, Journal of AI Research</div>
+                    <div class="sidebar-item">Program Committee, ICML, NeurIPS</div>
+                    <div class="sidebar-item">Conference Co-Chair, AAAI 2024</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Technical Skills</div>
+                    <span class="badge">Python</span>
+                    <span class="badge">TensorFlow</span>
+                    <span class="badge">PyTorch</span>
+                    <span class="badge">CUDA</span>
+                    <span class="badge">Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
